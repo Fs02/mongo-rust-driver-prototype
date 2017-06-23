@@ -11,7 +11,7 @@ version = "0.3.0"
 
 [dependencies]
 bitflags = "0.9.1"
-bson = "0.8.0"
+bson = { git = "https://github.com/zonyitoo/bson-rs" }
 bufstream = "0.1.3"
 byteorder = "1.0.0"
 chrono = "0.4.0"

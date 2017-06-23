@@ -2,7 +2,7 @@
 use bson::{self, Bson, oid};
 use bson::spec::BinarySubtype;
 
-use chrono::{DateTime, UTC};
+use chrono::{DateTime, Utc};
 use crypto::digest::Digest;
 use crypto::md5::Md5;
 
@@ -80,7 +80,7 @@ pub struct GfsFile {
     // The filename of the document.
     pub name: Option<String>,
     // The date the document was first stored in GridFS.
-    pub upload_date: Option<DateTime<UTC>>,
+    pub upload_date: Option<DateTime<Utc>>,
     // The content type of the file.
     pub content_type: Option<String>,
     // Any additional metadata provided by the user.
@@ -195,7 +195,7 @@ impl File {
         if self.mode == Mode::Write {
             if try!(self.err_description()).is_none() {
                 if self.doc.upload_date.is_none() {
-                    self.doc.upload_date = Some(UTC::now());
+                    self.doc.upload_date = Some(Utc::now());
                 }
                 self.doc.md5 = self.wsum.result_str();
                 try!(self.gfs.files.insert_one(self.doc.to_bson(), None));

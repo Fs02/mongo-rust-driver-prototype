@@ -3,7 +3,7 @@ use {Client, Result};
 use Error::{self, ArgumentError, OperationError};
 
 use bson::{self, Bson, oid};
-use chrono::{DateTime, UTC};
+use chrono::{DateTime, Utc};
 
 use coll::options::FindOptions;
 use command_type::CommandType;
@@ -33,7 +33,7 @@ pub struct IsMasterResult {
     pub is_master: bool,
     pub max_bson_object_size: i64,
     pub max_message_size_bytes: i64,
-    pub local_time: Option<DateTime<UTC>>,
+    pub local_time: Option<DateTime<Utc>>,
     pub min_wire_version: i64,
     pub max_wire_version: i64,
 
